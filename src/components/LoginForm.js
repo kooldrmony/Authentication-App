@@ -6,7 +6,8 @@ class LoginForm extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			text: ''
+			email: '',
+			password: ''
 		} 
 	}
 
@@ -16,13 +17,20 @@ class LoginForm extends React.Component {
 			<Card>
 				<CardSection>
 					<Input
+						placeholder="user@gmail.com"
 						label="Email" 
-						value={this.state.text}
-						onChangeText={() => this.setState({ text })}
+						value={this.state.email}
+						onChangeText={() => this.setState({ email })}
 					/>
 				</CardSection>
 
 				<CardSection>
+						<Input
+						placeholder="password"
+						label="Password" 
+						value={this.state.password}
+						onChangeText={() => this.setState({ password })}
+						/>
 				</CardSection>
 
 				<CardSection>
