@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
 					.catch(() => {
 						this.setState({ error: "Authentication Failed"});
 					});
-			})
+			});
 
 	}
 
