@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
+import Header from "./src/components/common/Header";
 import LoginForm from "./src/components/LoginForm";
-import Header from "./src/components/Header";
+
 
 
 export default class App extends React.Component {
   componentWillMount() {
-    firebase.intitializeApp({
+    firebase.initializeApp({
     apiKey: "AIzaSyDtMB8iQWk1t_yBurOzxnXhvgqCCZU_g7M",
     authDomain: "authentication-85da2.firebaseapp.com",
     databaseURL: "https://authentication-85da2.firebaseio.com",
@@ -20,11 +21,11 @@ export default class App extends React.Component {
   render() {
     return (
       <View>
-        <Header headerText="Authentication"/>
+        <Header headerText="Authentication" />
         <LoginForm />
       </View>
     );
-  }
+  };
 }
 
 // const styles = StyleSheet.create({

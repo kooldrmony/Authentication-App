@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 
-const Input = ({ label, value, onChangeText. placeholder, secureTextEntry }) => {
+const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
 
-	const { inputSytle, labelStyle, conatinerStyle } = styles;
+	const { inputStyle, labelStyle, containerStyle } = styles;
 
 	return (
 		<View style={containerStyle}>
@@ -39,7 +39,7 @@ const styles = {
 	},
 
 	containerStyle: {
-		heigth: 40,
+		// height: 40,
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center'
@@ -47,4 +47,4 @@ const styles = {
 	}
 }
 
-export default Input;
+export { Input }; 

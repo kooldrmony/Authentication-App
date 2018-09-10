@@ -29,4 +29,4 @@ cardStyle: {
 
 });
 
-export default Card;
+export { Card };

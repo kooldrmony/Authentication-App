@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { Button, Card, CardSection, Input } from './common';
+import { View, Text } from 'react-native';
 import firebase from 'firebase';
+import { Button, Card, CardSection, Input } from './common';
 
 class LoginForm extends React.Component {
 	constructor() {
@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
 			error: ''
 		} 
 
-		onButtonPress = onButtonPress.bind(this)
+		this.onButtonPress = this.onButtonPress.bind(this)
 	}
 
 	onButtonPress() {
@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
 			.catch(() => {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
 					.catch(() => {
-						this.setState({ error: "Authentication Failed"});
+						this.setState({ error: "Authentication Failed" });
 					});
 			});
 
@@ -31,25 +31,29 @@ class LoginForm extends React.Component {
 
 
 	render() {
-		return (
+
+		return (		
+
 			<Card>
-				<CardSection>
+
+				<CardSection>			
 					<Input
+						secureTextEntry
 						placeholder="user@gmail.com"
 						label="Email" 
 						value={this.state.email}
-						onChangeText={() => this.setState({ email })}
+						onChangeText={email => this.setState({ email })}
 					/>
 				</CardSection>
 
-				<CardSection>
-						<Input
+				<CardSection>			
+					<Input
 						secureTextEntry
 						placeholder="password"
 						label="Password" 
 						value={this.state.password}
-						onChangeText={() => this.setState({ password })}
-						/>
+						onChangeText={password => this.setState({ password })}
+					/>
 				</CardSection>
 
 				<Text style={styles.textStyle}>
@@ -62,21 +66,20 @@ class LoginForm extends React.Component {
 					</Button>
 				</CardSection>
 
-
-
-
-
 			</Card>
-						);
-	}
-}
+				)
+			};
+		}
 
 
-const styles= {
+
+const styles = {
+
 	textStyle: {
-		fontSize: 20,
-		alignItems: 'center',
+		fontSize: 30,
+		alignSelf: 'center',
 		color: 'red'
 	}
-}
+};
+
 export default LoginForm;
