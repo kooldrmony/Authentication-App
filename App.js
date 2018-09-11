@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
 import Header from "./src/components/common/Header";
-import Button from "./src/components/common/Button"
+import Button from "./src/components/common/Button";
+import Spinner from "./src/components/common/Spinner";
 import LoginForm from "./src/components/LoginForm";
 
 
@@ -11,7 +12,7 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false
+      loggedIn: null
     }
 
 
@@ -36,13 +37,22 @@ export default class App extends React.Component {
   }
 
   renderContent() {
-    if (this.state.loggedIn) {
-      <Button>
-        Log Out
-      </Button>
-    };
+    switch (this.state.loggedIn) {
+      case true:
+        return (
+          <Button onPress{() => firebase.auth().signOut()}>
+            Log Out()
+          </Button>
+        );
 
-    return <LoginForm />;
+      case false:
+        return <LoginForm />;
+
+      default: 
+        return <Spinner size='large' />;
+
+    }
+    
   }
 
   render() {
