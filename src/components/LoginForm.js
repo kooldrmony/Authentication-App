@@ -14,7 +14,10 @@ class LoginForm extends React.Component {
 		} 
 
 		this.onButtonPress = this.onButtonPress.bind(this)
+		this.onSuccesfullLogin = this.onSuccesfullLogin.bind(this)
 	}
+
+
 
 	onButtonPress() {
 
@@ -23,22 +26,39 @@ class LoginForm extends React.Component {
 		this.setState({ error: '', loading: true });
 
 		firebase.auth().signInWithEmailAndPassword(email, password)
+			.then(this.onSuccesfullLogin)
 			.catch(() => {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
-					.catch(() => {
-						this.setState({ error: "Authentication Failed" });
-					});
+					.then(this.onSuccesfullLogin)
+					.catch(this.onFailedLogin)
 			});
 
 	}
 
+	onSuccesfullLogin() {
+
+		this.setState({
+			email: '',
+			password: '',
+			loading: false,
+			error: ''
+		})
+	}
+
+	onFailedLogin(){
+		this.setState({ error: 'Authentication Failed', loading: false })
+	}
+
 	renderButton() {
-		if(this.state.loading){
+		if (this.state.loading) {
 			return <Spinner />
-		}else {
+		}
+
+		return (
 			<Button onPress={this.onButtonPress}>
 				Log In 
-			</Button>}
+			</Button>
+		);
 	};
 
 
