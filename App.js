@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
 import Header from "./src/components/common/Header";
+import Button from "./src/components/common/Button"
 import LoginForm from "./src/components/LoginForm";
 
 
@@ -34,11 +35,21 @@ export default class App extends React.Component {
     });
   }
 
+  renderContent() {
+    if (this.state.loggedIn) {
+      <Button>
+        Log Out
+      </Button>
+    };
+
+    return <LoginForm />;
+  }
+
   render() {
     return (
       <View>
         <Header headerText="Authentication" />
-        <LoginForm />
+        {this.renderContent()}
       </View>
     );
   };
