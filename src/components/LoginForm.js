@@ -19,6 +19,8 @@ class LoginForm extends React.Component {
 
 		const { email, password } = this.state;
 
+		this.setState({ error: ''});
+
 		firebase.auth().signInWithEmailAndPassword(email, password)
 			.catch(() => {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
