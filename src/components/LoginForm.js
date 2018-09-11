@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
 
 		this.onButtonPress = this.onButtonPress.bind(this)
 		this.onSuccesfullLogin = this.onSuccesfullLogin.bind(this)
+		this.onFailedLogin = this.onFailedLogin.bind(this)
 	}
 
 
@@ -43,11 +44,11 @@ class LoginForm extends React.Component {
 			loading: false,
 			error: ''
 		})
-	}
+	};
 
 	onFailedLogin(){
 		this.setState({ error: 'Authentication Failed', loading: false })
-	}
+	};
 
 	renderButton() {
 		if (this.state.loading) {
