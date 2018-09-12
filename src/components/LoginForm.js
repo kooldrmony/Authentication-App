@@ -71,7 +71,6 @@ class LoginForm extends React.Component {
 
 				<CardSection>			
 					<Input
-						secureTextEntry
 						placeholder="user@gmail.com"
 						label="Email" 
 						value={this.state.email}
